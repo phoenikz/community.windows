@@ -96,6 +96,10 @@ function Present($path, $regex, $line, $insertafter, $insertbefore, $create, $ba
 	}
 	Else {
 		$lines = [System.Collections.ArrayList] $before;
+        $alltext = [System.IO.File]::ReadAllText($cleanpath, $encodingobj);
+        If (($alltext[-1] -eq "`n") -or ($alltext[-1] -eq "`r")) {
+            $lines.Add("")
+        }
 	}
 
 	if ($diff_support) {
@@ -241,6 +245,10 @@ function Absent($path, $regex, $line, $backup, $validate, $encodingobj, $linesep
 	}
 	Else {
 		$lines = [System.Collections.ArrayList] $before;
+        $alltext = [System.IO.File]::ReadAllText($cleanpath, $encodingobj);
+        If (($alltext[-1] -eq "`n") -or ($alltext[-1] -eq "`r")) {
+            $lines.Add("")
+        }
 	}
 
 	if ($diff_support) {

@@ -94,6 +94,12 @@ options:
     type: str
     choices: [ unix, windows ]
     default: windows
+  keepemptyendrow:
+    description:
+      - If set, the module will preserve the number of empty rows at the end of the original file. When unset, the module will clear empty rows at the
+        end of the input file if a change occurs.
+    type: bool
+    default: no
 seealso:
 - module: ansible.builtin.assemble
 - module: ansible.builtin.lineinfile
